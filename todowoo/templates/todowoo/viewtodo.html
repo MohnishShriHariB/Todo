@@ -1,0 +1,18 @@
+{% extends 'todowoo\base.html' %}
+{% block content %}
+{{error}}
+<h1>{{todos.Title}}</h1>
+<form method="post">
+  {{form.as_p}}
+  {% csrf_token %}
+  <button type="submit">Submit</button>
+</form>
+<form method="post" action="{% url 'completetodo' todos.id %}">
+  {% csrf_token %}
+  <button type="submit">Complete</button>
+</form>
+<form method="post" action="{% url 'deletetodo' todos.id %}">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+{% endblock %}

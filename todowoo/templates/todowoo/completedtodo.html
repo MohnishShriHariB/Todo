@@ -1,0 +1,16 @@
+{% extends 'todowoo\base.html' %}
+{% block content %}
+<br>
+<h1>Completed Todos</h1>
+<ul>
+  {% for a in todos %}
+  <li>{% if a.Important %}<b>{{a.Title}}</b>
+  {% else %}{{a.Title}}
+  {% endif %}
+  {% if a.List %}- {{ a.List }}{% endif %}
+  <br> Completed on {{a.Completed}}
+  </li>
+  {% endfor %}
+</ul>
+<br>
+{% endblock %}

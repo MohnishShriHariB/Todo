@@ -1,0 +1,20 @@
+{% extends 'todowoo\base.html' %}
+{% block content %}
+<br>
+<h1>WELCOME</h1>
+<ul>
+  {% for a in todos %}
+  <li><a href="{% url 'viewtodo' a.id %}">{% if a.Important %}<b>{{a.Title}}</b>
+  {% else %}{{a.Title}}
+  {% endif %}
+  {% if a.List %}- {{ a.List }}{% endif %}</a>
+  </li>
+  {% endfor %}
+</ul>
+<br>
+<form method="post" action="{% url 'createtodo' %}">
+  {% csrf_token %}
+  <button type="submit">Create</button>
+</form>
+
+{% endblock %}
